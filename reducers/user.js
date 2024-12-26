@@ -18,7 +18,7 @@ const userSlice = createSlice({
             username && (state.value.username = username)
             email && (state.value.email = email)
             token && (state.value.token = token)
-            coins && (state.value.coins = coins)
+            if (coins) {state.value.coins = coins}
         },
         logout : state => {
             state.value.username = null

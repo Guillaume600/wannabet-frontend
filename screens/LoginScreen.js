@@ -32,7 +32,6 @@ export default function LoginScreen({ navigation }) {
     }).then(response => response.json())
       .then(data => {
         if (data.result) {
-          console.log('ok')
           dispatch(update({ token: data.token, email: data.email, username: data.username, coins: data.coins }));
           navigation.navigate('TabNavigator', { screen: 'Bet' })
         } else {
