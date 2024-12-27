@@ -40,7 +40,7 @@ export default function SignupScreen({ navigation }) {
         .then(data => {
           if (data.result) {
             console.log(data)
-            dispatch(update({ token: data.token, username: data.username, email: data.email, coins: data.coins}));
+            dispatch(update({ token: data.token, username: data.username, email: data.email, coins: data.coins, avatar: data.avatar}));
             navigation.navigate('TabNavigator', {screen: 'Bet'});
           } else {
             setDuplicateError(true);

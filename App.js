@@ -33,7 +33,9 @@ const TabNavigator = () => {
       },
       tabBarActiveTintColor: '#2196f3',
       tabBarInactiveTintColor: 'gray',
-      headerShown: false
+      headerShown: false,
+      // Démontage le composant au changement d'onglet
+      unmountOnBlur: true
     })}>
       <Tab.Screen name='Bet' component={BetScreen} />
       <Tab.Screen name='Rank' component={RankScreen} />
