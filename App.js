@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import BetScreen from './screens/BetScreen'
+import BetInfosScreen from './screens/BetInfosScreen';
 import RankScreen from './screens/RankScreen'
 import HomeScreen from './screens/HomeScreen'
 import MainScreen from './screens/MainScreen'
@@ -59,6 +60,7 @@ export default function App() {
         <Stack.Screen name='Login' component={LoginScreen} />
         <Stack.Screen name='Signup' component={SignupScreen} />
         <Stack.Screen name='ForgotPassword' component={ForgotPasswordScreen} />
+        <Stack.Screen name='BetInfos' component={BetInfosScreen} />
         <Stack.Screen name='TabNavigator' component={TabNavigator} />
       </Stack.Navigator>
     </NavigationContainer>

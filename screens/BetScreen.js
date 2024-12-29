@@ -51,16 +51,17 @@ const BetScreen = () => {
     getMatchs()
   }, [currentRound])
 
+  const showAvatar = user.avatar ? 
+  <Image source={{uri: user.avatar}} style={styles.avatar} /> :
+  <Image source={require('../assets/WannaBet_Logo.png')} style={styles.logo} />
+
   return (
     <SafeAreaView style={styles.main}>
       <ImageBackground
         source={require('../assets/background.png')}
         style={styles.background}
       >
-        <Image
-          style={styles.logo}
-          source={require('../assets/WannaBet_Logo.png')}
-        />
+        {showAvatar}
         <Text style={styles.title}>
           Bonjour {user.username}, tu as {user.coins} coins
         </Text>
@@ -126,6 +127,14 @@ const styles = StyleSheet.create({
   matchList: {
     flex: 1,
     alignItems: 'center'
+  },
+  avatar: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 20,
+    alignSelf: 'center',
+    marginTop: 20
   }
 });
 

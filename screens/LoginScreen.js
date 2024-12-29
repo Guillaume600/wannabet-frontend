@@ -32,7 +32,9 @@ export default function LoginScreen({ navigation }) {
     }).then(response => response.json())
       .then(data => {
         if (data.result) {
-          dispatch(update({ token: data.token, email: data.email, username: data.username, coins: data.coins }));
+          dispatch(update({ token: data.token, email: data.email, username: data.username, coins: data.coins, avatar: data.avatar }));
+          setEmail('')
+          setPassword('')
           navigation.navigate('TabNavigator', { screen: 'Bet' })
         } else {
           setNonExistant(true);
@@ -62,6 +64,7 @@ return (
       <TextInput placeholder="Mot de passe" onChangeText={(value) => setPassword(value)} value={password} style={styles.input}
         textContentType="password"
         autoComplete="current-password"
+        secureTextEntry={true}
       />
       <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.textButtonbutton} activeOpacity={0.8}>
         <Text style={styles.textButton}>Mot de passe oublié?</Text>

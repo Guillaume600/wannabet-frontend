@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Text, View, Pressable, TextInput, KeyboardAvoidingView, SafeAreaView, Modal, Platform, StyleSheet, Dimensions, TouchableOpacity, Image } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { update } from '../reducers/user'
+import {useNavigation} from '@react-navigation/native'
 
 const Match = (props) => {
     // Destructuration des données
@@ -16,6 +17,7 @@ const Match = (props) => {
     const [stake, setStake] = useState(null)
     const user = useSelector(store => store.user.value)
     const dispatch = useDispatch()
+    const navigation = useNavigation()
 
     // Handler cancel modal
     const handleCancelModal = () => {
@@ -37,7 +39,11 @@ const Match = (props) => {
             }
             handleCancelModal()
         }
+    }
 
+    // Handler de navigation vers la page More Infos
+    const handleMoreInfo = () => {
+      navigation.navigate('BetInfos', {IdHome: props.teamHome.teamId, IdAway: props.teamAway.teamId})
     }
 
     // Afficher le bouton bet ou le score

@@ -39,8 +39,10 @@ export default function SignupScreen({ navigation }) {
         .then(response => response.json())
         .then(data => {
           if (data.result) {
-            console.log(data)
-            dispatch(update({ token: data.token, username: data.username, email: data.email, coins: data.coins, avatar: data.avatar}));
+            dispatch(update({ token: data.token, username: data.username, email: data.email, coins: data.coins}));
+            setEmail('')
+            setUsername('')
+            setPassword('')
             navigation.navigate('TabNavigator', {screen: 'Bet'});
           } else {
             setDuplicateError(true);
@@ -77,6 +79,7 @@ export default function SignupScreen({ navigation }) {
                   autoCapitalize="none"
                   textContentType="password"
                   autoComplete="new-password"
+                  secureTextEntry={true}
             />    
                     { passwordError && (<Text style={styles.error}>Le mot de passe doit contenir au moins 8 caractères, dont un majuscule, une minuscule, un numérique et un caractère spécial.</Text> )}
           <Text style={styles.avertissement}>Avertissement: Cette application propose un service de divertissement basé sur un systéme de paris sur une ressource fictive. Cependant cela pourrait entraîner un comportement addictif chez les sujets les plus sensibles</Text>
