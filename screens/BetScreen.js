@@ -31,7 +31,7 @@ const BetScreen = () => {
       const data = await response.json()
       if (data.rounds.length > 0) {
         setRounds(data.rounds)
-        setCurrentRound(data.rounds[1])
+        setCurrentRound(data.rounds[0])
       }
     }
     getRounds()
@@ -43,6 +43,7 @@ const BetScreen = () => {
       if (currentRound) {
         const response = await fetch(`http://${process.env.EXPO_PUBLIC_IP_ADDRESS}:3000/matchs/get/${currentRound}`)
         const data = await response.json()
+        console.log(data)
         if (data.matchs.length > 0) {
           setMatchs(data.matchs)
         }
@@ -81,7 +82,14 @@ const BetScreen = () => {
           data={matchs}
           keyExtractor={(item, index) => index}
           renderItem={({item}) => (
-            <Match {...item} />
+            <View style={styles.matchCard}>
+              <View style={styles.dateContainer}>
+                <Text style={styles.dateMatch}>{new Date(item._id).toLocaleDateString("fr-FR", {weekday: 'long', day: '2-digit', month:'long', year: 'numeric'})}</Text>
+              </View>
+              {item.matchs.map((match, index) => (
+                <Match key={index} {...match} />
+              ))}
+            </View>
           )}
         />
       </ImageBackground>
@@ -135,6 +143,20 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignSelf: 'center',
     marginTop: 20
+  },
+  matchCard: {
+    alignItems: 'center'
+  },
+  dateContainer: {
+    alignSelf: 'center',
+    backgroundColor: 'grey',
+    padding: 10,
+    borderRadius: 10
+  },
+  dateMatch: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 20
   }
 });
 
