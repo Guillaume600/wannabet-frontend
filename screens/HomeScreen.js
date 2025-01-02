@@ -40,7 +40,7 @@ const HomeScreen = ({ navigation }) => {
 
   // Handler d'envoi des changements en BDD et dans le store
   const handleUpdateProfile = async () => {
-    const response = await fetch(`http://${process.env.EXPO_PUBLIC_IP_ADDRESS}:3000/users/update/${user.token}`, { method: 'POST', headers: { "Content-Type": 'application/json' }, body: JSON.stringify({ email: newEmail, username: newUsername, avatar: newAvatar }) })
+    const response = await fetch(`http://${process.env.EXPO_PUBLIC_IP_ADDRESS}:3000/users/update/${user.token}`, { method: 'PUT', headers: { "Content-Type": 'application/json' }, body: JSON.stringify({ email: newEmail, username: newUsername, avatar: newAvatar }) })
     const data = await response.json()
     if (data.result) {
       Alert.alert('Succés', data.message, [{

@@ -11,7 +11,7 @@ import {
   Alert,
 } from "react-native";
 import { useDispatch } from "react-redux";  
-import { setResetInfo } from "../reducers/users";  
+import { setResetInfo } from "../reducers/user";  
 
 export default function ForgotPasswordScreen({ navigation }) {
   const [email, setEmail] = useState(email);
